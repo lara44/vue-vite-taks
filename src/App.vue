@@ -1,16 +1,9 @@
 <script setup lang="ts">
-
+import TaskContainer from './components/task/TaskContainer.vue';
 </script>
 
 <template>
   <div>
-       <v-container>
-        <v-card>
-          <v-header>
-            <h1>List of Task</h1>
-          </v-header>
-        </v-card>
-      </v-container>
+    <TaskContainer />
   </div>
 </template>
-
