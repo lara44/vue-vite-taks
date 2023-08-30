@@ -7,23 +7,27 @@ const taskStore = useTaskStore();
 
 <template>
   <v-container>
-    <v-card class="mx-auto" max-width="500">
+    <v-card max-width="600">
       <v-header>
         <h3 class="text-center">List of Task</h3>
         <v-btn
-          color="primary"
-          size="x-small"
+          color="#1976D2"
+          size="small"
           @click="taskStore.isDialogTask = true"
+          style="margin-left: 18px"
           >Add Task</v-btn
         ><br />
       </v-header>
       <v-card-text>
         <v-table density="compact">
           <thead>
-            <tr>
+            <tr v-if="taskStore.listTasks.length > 0">
               <th class="text-left">id</th>
               <th class="text-left">Description</th>
               <th class="text-left">Options</th>
+            </tr>
+            <tr v-else>
+              <th class="text-center">There is not task</th>
             </tr>
           </thead>
           <tbody>
@@ -32,25 +36,23 @@ const taskStore = useTaskStore();
               <td>{{ item.description }}</td>
               <td>
                 <v-btn
-                  color="warning"
-                  size="x-small"
-                  @click="taskStore.isDialogTask = true"
-                  >Edit</v-btn
-                ><br />
+                  density="compact"
+                  icon="mdi-pencil mdi-18px"
+                  color="#e59e06"
+                ></v-btn>
                 <v-btn
-                  color="red"
-                  size="x-small"
-                  @click="taskStore.isDialogTask = true"
-                  >Delete</v-btn
-                ><br />
+                  density="compact"
+                  icon="mdi-delete mdi-18px"
+                  color="#f2533a"
+                ></v-btn>
               </td>
             </tr>
           </tbody>
         </v-table>
       </v-card-text>
     </v-card>
-    <template>
-      <TaskDialog />
-    </template>
   </v-container>
+  <template v-if="taskStore.isDialogTask">
+    <TaskDialog />
+  </template>
 </template>

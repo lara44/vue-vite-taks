@@ -26,15 +26,13 @@ const sendTask = () => {
 };
 </script>
 <template>
-  <div class="text-center">
-    <v-dialog v-model="taskStore.isDialogTask" width="auto">
-      <v-card class="mx-auto" max-width="500">
-        <v-header>
-          <h3 class="text-center">Add New Task</h3>
-        </v-header>
+  <v-row justify="center">
+    <v-dialog v-model="taskStore.isDialogTask" persistent max-width="500">
+      <v-card>
+        <v-card-title class="text-h5 text-center"> Add New Task </v-card-title>
         <v-card-text>
           <v-text-field
-            label="Entry description task¨*"
+            label="Entry description task*"
             v-model="descriptionTask"
           ></v-text-field>
           <pre>{{ descriptionTask }}</pre>
@@ -53,5 +51,5 @@ const sendTask = () => {
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </div>
+  </v-row>
 </template>
