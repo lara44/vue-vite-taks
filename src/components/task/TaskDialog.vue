@@ -7,7 +7,7 @@ const descriptionTask = ref<string>('');
 const errorTaskMessages = ref<string[]>([]);
 
 const validateTask = () => {
-  let errorTask = false;
+  let errorTask: boolean = false;
   errorTaskMessages.value = [];
   if (!descriptionTask.value)
     errorTaskMessages.value.push('Entry description task*');
@@ -36,6 +36,8 @@ const sendTask = () => {
             v-model="descriptionTask"
           ></v-text-field>
           <pre>{{ descriptionTask }}</pre>
+          <pre>errorTask: {{ errorTask }}</pre>
+          <pre>errorMessageTask{{ errorTaskMessages }}</pre>
           <div
             v-for="(error, index) in errorTaskMessages"
             style="color: red; text-align: center"
